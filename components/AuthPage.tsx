@@ -1,6 +1,7 @@
+
 import React, { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import { TerminalIcon } from './icons';
+import { TerminalIcon, EyeIcon, EyeOffIcon } from './icons';
 
 type PageProps = {
   onBack: () => void;
@@ -10,6 +11,7 @@ export const AuthPage: React.FC<PageProps> = ({ onBack }) => {
     const [isLogin, setIsLogin] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [message, setMessage] = useState<string | null>(null);
@@ -71,14 +73,24 @@ export const AuthPage: React.FC<PageProps> = ({ onBack }) => {
                         <label htmlFor="password" className="block text-sm font-medium text-slate-300 mb-2">
                           Password
                         </label>
-                        <input
-                          id="password"
-                          type="password"
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)}
-                          className="w-full bg-gray-900 border border-slate-700 rounded-sm shadow-sm focus:ring-green-500 focus:border-green-500 text-slate-200 p-3 transition"
-                          required
-                        />
+                        <div className="relative">
+                            <input
+                              id="password"
+                              type={showPassword ? "text" : "password"}
+                              value={password}
+                              onChange={(e) => setPassword(e.target.value)}
+                              className="w-full bg-gray-900 border border-slate-700 rounded-sm shadow-sm focus:ring-green-500 focus:border-green-500 text-slate-200 p-3 pr-10 transition"
+                              required
+                            />
+                            <button
+                                type="button"
+                                onClick={() => setShowPassword(!showPassword)}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-green-400 transition-colors"
+                                aria-label={showPassword ? "Hide password" : "Show password"}
+                            >
+                                {showPassword ? <EyeOffIcon className="w-5 h-5" /> : <EyeIcon className="w-5 h-5" />}
+                            </button>
+                        </div>
                     </div>
                     {error && <div className="text-red-400 bg-red-900/20 p-3 text-sm rounded-sm text-center">{error}</div>}
                     {message && <div className="text-green-400 bg-green-900/20 p-3 text-sm rounded-sm text-center">{message}</div>}

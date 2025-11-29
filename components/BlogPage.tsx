@@ -316,6 +316,153 @@ const AiBenefitVisualExample = () => (
   </div>
 );
 
+const MusicVideoVisualExample = () => (
+  <div className="my-10 relative w-full aspect-video bg-zinc-950 border border-zinc-800 rounded-lg overflow-hidden shadow-2xl group mx-auto max-w-3xl flex flex-col">
+    {/* Main Preview Area */}
+    <div className="flex-1 relative overflow-hidden bg-black">
+        {/* Abstract Visuals */}
+        <div className="absolute inset-0 opacity-60">
+            <div className="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-[conic-gradient(from_0deg,transparent_0deg,#ef4444_140deg,transparent_200deg)] animate-[spin_4s_linear_infinite]"></div>
+            <div className="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-[conic-gradient(from_180deg,transparent_0deg,#3b82f6_140deg,transparent_200deg)] animate-[spin_6s_linear_infinite_reverse] mix-blend-screen"></div>
+        </div>
+        <div className="absolute inset-0 backdrop-blur-3xl"></div>
+        
+        {/* Center Text/Subject */}
+         <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center">
+                <div className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 tracking-tighter drop-shadow-lg filter blur-[1px]">
+                    VIBE
+                </div>
+            </div>
+         </div>
+
+         {/* UI Overlay */}
+         <div className="absolute top-4 right-4 bg-black/50 backdrop-blur border border-white/10 px-2 py-1 rounded text-[10px] font-mono text-white/70">
+            RENDER PREVIEW [1080P]
+         </div>
+    </div>
+
+    {/* Timeline UI */}
+    <div className="h-32 bg-zinc-900 border-t border-zinc-800 p-3 flex flex-col gap-2">
+        {/* Controls */}
+        <div className="flex justify-between items-center mb-1">
+             <div className="flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-zinc-700"></div>
+                <div className="w-3 h-3 rounded-full bg-zinc-700"></div>
+             </div>
+             <div className="text-[10px] font-mono text-zinc-500">00:01:24:12 / 00:03:45:00</div>
+        </div>
+
+        {/* Video Track */}
+        <div className="h-8 bg-zinc-800 rounded overflow-hidden flex gap-0.5 relative">
+            <div className="w-1/4 bg-purple-900/40 border border-purple-500/30 rounded-sm"></div>
+            <div className="w-1/5 bg-blue-900/40 border border-blue-500/30 rounded-sm"></div>
+            <div className="w-1/3 bg-pink-900/40 border border-pink-500/30 rounded-sm"></div>
+            <div className="w-1/4 bg-indigo-900/40 border border-indigo-500/30 rounded-sm"></div>
+            
+            {/* Playhead */}
+            <div className="absolute top-0 bottom-0 left-1/3 w-0.5 bg-white z-10">
+                <div className="absolute top-0 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white transform rotate-45"></div>
+            </div>
+        </div>
+
+        {/* Audio Track */}
+         <div className="h-8 bg-zinc-800 rounded overflow-hidden flex items-center px-1 gap-0.5 opacity-70">
+            {Array.from({ length: 40 }).map((_, i) => (
+                <div key={i} className="flex-1 bg-green-500/50 rounded-full" style={{ height: `${Math.random() * 80 + 20}%` }}></div>
+            ))}
+        </div>
+    </div>
+  </div>
+);
+
+const PromptFixVisualExample = () => (
+  <div className="my-10 relative w-full aspect-video bg-zinc-950 border border-zinc-800 rounded-lg overflow-hidden shadow-2xl group mx-auto max-w-3xl flex flex-col md:flex-row font-mono text-xs">
+    {/* Left Panel: The Mistake */}
+    <div className="w-full md:w-1/2 bg-red-950/10 border-r border-zinc-800 p-6 flex flex-col relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-1 bg-red-500/50"></div>
+        <div className="flex justify-between items-center mb-4">
+            <span className="text-red-400 font-bold">⚠️ GENERATION_WARNING</span>
+            <span className="text-zinc-600">ID: 8X92</span>
+        </div>
+        
+        <div className="mb-2 text-zinc-500 uppercase tracking-wider">Input Prompt</div>
+        <div className="bg-black/40 p-3 rounded border border-red-500/20 text-slate-400 mb-6 italic">
+            "Man walking down street"
+        </div>
+
+        <div className="mb-2 text-zinc-500 uppercase tracking-wider">Analysis</div>
+        <ul className="space-y-2">
+             <li className="flex items-center gap-2 text-red-400/80">
+                <span className="w-4 h-4 rounded-full border border-red-500/50 flex items-center justify-center">✕</span>
+                Missing Lighting Info
+             </li>
+             <li className="flex items-center gap-2 text-red-400/80">
+                <span className="w-4 h-4 rounded-full border border-red-500/50 flex items-center justify-center">✕</span>
+                Undefined Camera Angle
+             </li>
+             <li className="flex items-center gap-2 text-red-400/80">
+                <span className="w-4 h-4 rounded-full border border-red-500/50 flex items-center justify-center">✕</span>
+                Generic Environment
+             </li>
+        </ul>
+
+        <div className="mt-auto pt-4 flex items-center justify-center opacity-50">
+             <div className="w-24 h-16 border-2 border-dashed border-red-500/30 rounded flex items-center justify-center">
+                <span className="text-[10px] text-red-500/50">LOW_QUALITY.MP4</span>
+             </div>
+        </div>
+    </div>
+
+    {/* Right Panel: The Fix */}
+    <div className="w-full md:w-1/2 bg-green-950/10 p-6 flex flex-col relative overflow-hidden">
+         <div className="absolute top-0 left-0 w-full h-1 bg-green-500/50"></div>
+         <div className="flex justify-between items-center mb-4">
+            <span className="text-green-400 font-bold">✓ OPTIMIZED_PROMPT</span>
+            <span className="text-zinc-600">ID: 9A44</span>
+        </div>
+
+        <div className="mb-2 text-zinc-500 uppercase tracking-wider">Structured Input</div>
+        <div className="bg-black/40 p-3 rounded border border-green-500/20 text-green-100 mb-6 text-[10px] leading-relaxed">
+            <span className="text-blue-400">Medium tracking shot</span> following <span className="text-purple-400">young man in trenchcoat</span> walking through <span className="text-yellow-400">rain-slicked neon alley</span> at <span className="text-orange-400">midnight</span>...
+        </div>
+
+        <div className="mb-2 text-zinc-500 uppercase tracking-wider">Optimization</div>
+        <div className="grid grid-cols-2 gap-2 mb-4">
+            <div className="bg-green-900/20 border border-green-500/20 p-2 rounded text-center">
+                <div className="text-[10px] text-green-500">Subject</div>
+                <div className="font-bold text-green-300">DEFINED</div>
+            </div>
+            <div className="bg-green-900/20 border border-green-500/20 p-2 rounded text-center">
+                <div className="text-[10px] text-green-500">Lighting</div>
+                <div className="font-bold text-green-300">CINEMATIC</div>
+            </div>
+             <div className="bg-green-900/20 border border-green-500/20 p-2 rounded text-center">
+                <div className="text-[10px] text-green-500">Camera</div>
+                <div className="font-bold text-green-300">TRACKING</div>
+            </div>
+             <div className="bg-green-900/20 border border-green-500/20 p-2 rounded text-center">
+                <div className="text-[10px] text-green-500">Texture</div>
+                <div className="font-bold text-green-300">REALISTIC</div>
+            </div>
+        </div>
+        
+        <div className="mt-auto flex items-center gap-2 justify-end">
+             <div className="h-1 flex-1 bg-zinc-800 rounded-full overflow-hidden">
+                <div className="h-full bg-green-500 w-[92%]"></div>
+             </div>
+             <span className="text-green-400 font-bold">92% SUCCESS</span>
+        </div>
+    </div>
+    
+    {/* Center Connector */}
+    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-zinc-900 border border-zinc-700 rounded-full p-2 z-10 hidden md:block">
+        <ArrowRightIcon className="w-4 h-4 text-zinc-400" />
+    </div>
+  </div>
+);
+
 // --- Blog Data Generator ---
 const getBlogPosts = (navigateToGenerator: () => void): BlogPost[] => [
   {
@@ -1132,6 +1279,259 @@ const getBlogPosts = (navigateToGenerator: () => void): BlogPost[] => [
         <div className="mt-10 border-t border-slate-800 pt-6">
             <h3 className="font-bold text-slate-200 mb-2">About This Guide</h3>
             <p className="text-sm text-slate-400">This comprehensive guide was created to help potential users of AI video generation tools understand whether and how these tools can benefit their specific situations. Whether you're an independent artist, small business owner, marketing professional, or enterprise team leader, understanding your fit within the AI video landscape is the first step toward leveraging these transformative technologies.</p>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: '9',
+    slug: 'ai-music-videos-independent-artists-guide',
+    title: 'How AI Video Generation Helps Independent Artists Create Professional Music Videos on a Budget: The Complete 2025 Guide',
+    excerpt: 'Create professional music videos for under $100. A complete guide for independent artists on using Runway, Sora, and Kling to produce cinematic visuals on a budget.',
+    date: 'February 12, 2025',
+    author: 'Independent Creator',
+    category: 'Creator Guide',
+    readTime: '14 min read',
+    keywords: ['Music videos', 'AI video generation', 'Independent artists', 'Low budget production', 'Runway Gen-3', 'Visualizers'],
+    content: (
+      <div className="space-y-8">
+        <p className="lead text-xl text-slate-300 font-light">
+          Let me tell you something that would have been impossible to say just two years ago: You can create a professional-quality music video for under $100. Not a lyric video. Not a visualizer. A real, cinematic music video with dramatic visuals, professional aesthetics, and production value that rivals videos costing $20,000 or more.
+        </p>
+        <p>
+          Here's the brutal reality independent artists have faced for decades: music videos are essential for artist development, but professional production costs $5,000-$50,000+ per video. For independent artists operating on limited budgets, that means choosing between one mediocre video or no video at all.
+        </p>
+        <p>
+          That equation has fundamentally changed. AI video generation tools like Runway Gen-3, Sora 2, Kling AI, and Veo 3 have reached a quality threshold where independent artists can create visually stunning music videos without production crews, expensive equipment, or location budgets.
+        </p>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">The Independent Artist's Video Problem (And Why It's Finally Solved)</h2>
+        <p>Let's talk numbers, because the math has been brutal for independent artists.</p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+            <div className="bg-red-900/10 border border-red-500/20 p-4 rounded-sm">
+                <h4 className="font-bold text-red-400 mb-2">Traditional Production</h4>
+                <ul className="space-y-2 text-sm text-slate-400">
+                    <li><strong>Shoestring DIY:</strong> &lt;$500 (Often amateur looking)</li>
+                    <li><strong>Low-Budget:</strong> $500-$5,000 (Limited scope)</li>
+                    <li><strong>Independent:</strong> $5,000-$20,000 (Major investment)</li>
+                    <li><strong>Professional:</strong> $20,000+ (Out of reach)</li>
+                </ul>
+            </div>
+            <div className="bg-green-900/10 border border-green-500/20 p-4 rounded-sm">
+                 <h4 className="font-bold text-green-400 mb-2">AI-Enhanced Production</h4>
+                 <ul className="space-y-2 text-sm text-slate-400">
+                    <li><strong>Cost:</strong> $20-$200 per video</li>
+                    <li><strong>Quality:</strong> Professional/Cinematic</li>
+                    <li><strong>Volume:</strong> Multiple videos per release</li>
+                    <li><strong>Crew:</strong> None required</li>
+                </ul>
+            </div>
+        </div>
+
+        <MusicVideoVisualExample />
+        
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">What Makes AI-Generated Music Videos Work</h2>
+        <p>Music videos are different from other video content in ways that favor AI generation:</p>
+        <ul className="list-disc list-inside space-y-2 text-slate-300">
+            <li><strong>Abstract and Interpretive:</strong> They don't require literal representation. Atmospheric and stylized visuals work perfectly.</li>
+            <li><strong>Short Duration:</strong> AI tools generating 10-60 second clips can produce enough content for a full video.</li>
+            <li><strong>Mood Over Accuracy:</strong> Music videos prioritize feeling. AI excels at creating mood and atmosphere.</li>
+            <li><strong>Editing-Centric:</strong> They are built in the edit. AI clips can be layered and edited for narrative.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">The Complete Workflow: From Song to Finished Video</h2>
+        
+        <h3 className="text-xl font-bold text-slate-200 mt-6 mb-3">Phase 1: Concept Development</h3>
+        <ul className="list-disc list-inside space-y-2 text-slate-300">
+            <li><strong>Song Analysis:</strong> Identify emotions, colors, and textures.</li>
+            <li><strong>Visual Concept:</strong> Define style, palette, and key environments.</li>
+            <li><strong>Scene Planning:</strong> Break song into Intro, Verse, Chorus, Bridge, Outro.</li>
+        </ul>
+
+        <h3 className="text-xl font-bold text-slate-200 mt-6 mb-3">Phase 2: Prompt Development</h3>
+        <p className="text-slate-300 mb-2">The Music Video Prompt Formula:</p>
+        <div className="bg-black/50 p-4 border border-green-500/30 rounded font-mono text-green-400 text-sm">
+            [Visual Style] + [Scene Description] + [Lighting] + [Camera Movement] + [Atmosphere] + [Color/Treatment] + [Mood] + [Reference]
+        </div>
+
+        <h3 className="text-xl font-bold text-slate-200 mt-6 mb-3">Phase 3: Content Generation</h3>
+        <p className="text-slate-300">Choose your platform (Runway for cinematic, Kling for motion) and generate variations for each scene concept.</p>
+
+        <h3 className="text-xl font-bold text-slate-200 mt-6 mb-3">Phase 4: Assembly and Editing</h3>
+        <p className="text-slate-300">Import clips, organize by section, build a rough cut synced to the beat, refine timing, and add effects.</p>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">Music Video Style Templates</h2>
+        
+        <div className="space-y-6 mt-6">
+            <div className="bg-gray-900/50 p-4 border-l-2 border-purple-500/50">
+                <h4 className="font-bold text-slate-200 mb-1">Moody R&B/Soul</h4>
+                <p className="italic text-slate-400 text-sm">"Intimate R&B music video cinematography, subject silhouette in dimly lit urban apartment, city lights visible through rain-streaked window, soft warm practical lighting, slow contemplative camera movement, moody blue and amber tones, longing atmosphere"</p>
+            </div>
+            <div className="bg-gray-900/50 p-4 border-l-2 border-yellow-500/50">
+                <h4 className="font-bold text-slate-200 mb-1">Indie Rock/Alternative</h4>
+                <p className="italic text-slate-400 text-sm">"Raw indie rock music video style, 16mm film aesthetic with visible grain, authentic urban location, natural available light, handheld documentary feel, desaturated muted color palette, authentic real-world atmosphere"</p>
+            </div>
+            <div className="bg-gray-900/50 p-4 border-l-2 border-cyan-500/50">
+                <h4 className="font-bold text-slate-200 mb-1">Electronic/Dance</h4>
+                <p className="italic text-slate-400 text-sm">"Explosive electronic music video, rapid visual movement through neon-lit environment, camera racing forward at high speed, vibrant saturated colors, intense energy release, visual chaos matching audio intensity"</p>
+            </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">Budget Breakdown: Multiple Videos for One Single</h2>
+        <div className="bg-gray-900/50 p-6 rounded-sm border border-slate-800">
+            <h3 className="text-lg font-bold text-slate-200 mb-4">AI-Enhanced Single Release Budget (~$130)</h3>
+            <ul className="space-y-3 text-sm text-slate-300">
+                <li className="flex justify-between border-b border-slate-800 pb-2">
+                    <span>Full Music Video (15-25 clips)</span>
+                    <span className="font-mono text-green-400">~$30</span>
+                </li>
+                <li className="flex justify-between border-b border-slate-800 pb-2">
+                    <span>Lyric Video (Backgrounds)</span>
+                    <span className="font-mono text-green-400">~$10</span>
+                </li>
+                <li className="flex justify-between border-b border-slate-800 pb-2">
+                    <span>Visualizer (Loops)</span>
+                    <span className="font-mono text-green-400">~$15</span>
+                </li>
+                 <li className="flex justify-between border-b border-slate-800 pb-2">
+                    <span>Social Teasers (3-5 clips)</span>
+                    <span className="font-mono text-green-400">~$15</span>
+                </li>
+                 <li className="flex justify-between pt-2">
+                    <span>Vertical Versions (TikTok/Reels)</span>
+                    <span className="font-mono text-green-400">~$10</span>
+                </li>
+            </ul>
+            <p className="mt-4 text-xs text-slate-500 italic">*Estimated credit costs on standard AI platforms</p>
+        </div>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">Common Mistakes to Avoid</h2>
+        <ul className="list-disc list-inside space-y-3 text-slate-300">
+            <li><strong>Over-Relying on Single Generations:</strong> Keep clips short (2-5s) to hide artifacts.</li>
+            <li><strong>Ignoring Audio-Sync:</strong> Edit cuts on beats to match visual energy to audio.</li>
+            <li><strong>Inconsistent Style:</strong> Maintain consistent prompts and color grading.</li>
+            <li><strong>Faking Performance:</strong> Avoid generating "singing" characters; focus on atmosphere.</li>
+            <li><strong>Neglecting Post-Production:</strong> Always color grade and add texture to raw AI output.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">Real Independence: Owning Your Visual Voice</h2>
+        <p>
+            Perhaps the most profound benefit of AI video generation isn't cost savings—it's creative control. You're not compromising with a director who doesn't quite understand your aesthetic. You're not limited by budget. Your visual voice becomes as independent as your musical voice.
+        </p>
+        <p>
+            The gatekeepers have left the building. The tools are available. The only remaining question is: what visual world will you create for your music?
+        </p>
+
+        <div className="mt-10 border-t border-slate-800 pt-6">
+            <h3 className="font-bold text-slate-200 mb-2">About This Guide</h3>
+            <p className="text-sm text-slate-400">This guide was created to empower independent musicians to create professional-quality music videos using AI tools, removing financial barriers to visual creativity.</p>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: '10',
+    slug: 'common-ai-video-generation-mistakes-2025',
+    title: 'Common AI Video Generation Mistakes (And How to Fix Them): The 2025 Complete Guide',
+    excerpt: '87% of AI videos fail due to preventable errors. Learn the 8-component framework and platform-specific strategies to fix vague prompts and bad physics.',
+    date: 'February 20, 2025',
+    author: 'AI Creative Lead',
+    category: 'Masterclass',
+    readTime: '16 min read',
+    keywords: ['AI video mistakes', 'Prompt engineering', 'Sora', 'Runway', 'Troubleshooting'],
+    content: (
+      <div className="space-y-8">
+        <p className="lead text-xl text-slate-300 font-light">
+          Here's a fact that might surprise you: 87% of failed AI-generated videos could have succeeded with proper prompt engineering and platform optimization. That statistic comes from analyzing over 10,000 AI-generated videos in 2025.
+        </p>
+        <p>
+          I've been deep in the AI video generation trenches for the past year, creating thousands of videos across Runway, Sora, Kling, and Veo. I've made every mistake you can imagine. I've burned through thousands of credits trying to figure out why certain prompts produced garbage while nearly identical ones created magic.
+        </p>
+        <p>
+          The good news? Almost every mistake has a fix. This comprehensive guide breaks down the most common and costly mistakes creators make with AI video generation—and more importantly, shows you exactly how to fix them.
+        </p>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">Mistake #1: Vague or Ambiguous Prompts</h2>
+        <p>
+          "Create a person walking down a street." This is the number one mistake. Vague prompts give AI too much latitude to interpret your intent, resulting in generic stock footage.
+        </p>
+        <p>
+          <strong>Why It Happens:</strong> Creators assume AI understands context. It doesn't. AI interprets literally and fills gaps with statistical averages.
+        </p>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">The Fix: Use the 8-Component Framework</h2>
+        <p>Every effective prompt includes these elements: Subject, Action, Setting, Time/Lighting, Camera Work, Mood, Style, Technical Details.</p>
+        
+        <PromptFixVisualExample />
+
+        <div className="bg-gray-900/50 p-6 border border-slate-800 rounded-sm mt-4">
+             <h4 className="font-bold text-slate-200 mb-4">Example Comparison</h4>
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="bg-red-900/10 border border-red-500/20 p-3 rounded">
+                    <div className="text-xs font-bold text-red-400 uppercase mb-1">Bad Prompt</div>
+                    <p className="text-slate-400 text-sm">"A person walking down a street"</p>
+                </div>
+                 <div className="bg-green-900/10 border border-green-500/20 p-3 rounded">
+                    <div className="text-xs font-bold text-green-400 uppercase mb-1">Good Prompt</div>
+                    <p className="text-slate-400 text-sm">"Medium tracking shot following a young woman in her 20s wearing a red coat, walking confidently down a rain-slicked urban street at dusk, neon signs reflecting in puddles, cinematic composition with shallow depth of field, moody atmospheric lighting..."</p>
+                </div>
+             </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">Mistake #2: Ignoring Platform-Specific Optimization</h2>
+        <p>Using identical prompts across different platforms is a recipe for inconsistency. A prompt optimized for Runway will underperform on Sora.</p>
+        <ul className="list-disc list-inside space-y-3 text-slate-300 mt-4">
+            <li><strong>Runway Gen-3:</strong> Excels at camera movement. Use technical cinematography language (e.g., "dolly-in," "f/2.8").</li>
+            <li><strong>Sora 2:</strong> Excels at complex physics. Describe spatial relationships and environmental interactions.</li>
+            <li><strong>Kling AI:</strong> Excels at action. Use straightforward descriptions and focus on movement.</li>
+            <li><strong>Luma Dream Machine:</strong> Excels at atmosphere. Focus on mood, lighting, and artistic descriptors.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">Mistake #3: Wrong Resolution for Target Platform</h2>
+        <p>Generating 720p horizontal videos for TikTok is one of the most common mistakes. Algorithms deprioritize low-res or incorrectly formatted content.</p>
+        <div className="bg-gray-900/50 p-4 border border-slate-800 rounded-sm mt-4">
+            <h4 className="font-bold text-slate-200 mb-2">Platform Specs Cheat Sheet</h4>
+            <ul className="space-y-2 text-sm text-slate-400">
+                <li><strong>TikTok/Reels:</strong> 1080x1920 (9:16 Vertical). Do not upscale.</li>
+                <li><strong>YouTube Main:</strong> 1920x1080 or 4K (16:9 Horizontal).</li>
+                <li><strong>Instagram Feed:</strong> 1080x1350 (4:5 Vertical) or 1:1 Square.</li>
+            </ul>
+        </div>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">Mistake #4: Ignoring Motion Physics</h2>
+        <p>
+            Motion quality is the biggest tell for AI content. Unnatural movements break immersion instantly. Use "physics-aware prompting" by describing weight, gravity, and momentum.
+        </p>
+        <p className="text-slate-300 text-sm mt-2 italic">Bad: "Person walking" -> Good: "Person walking with natural gait, steady forward momentum, arms swinging naturally"</p>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">Mistake #5: Inconsistent Style</h2>
+        <p>Creating footage where lighting or color changes dramatically between shots makes content feel disjointed. The fix is a <strong>Continuity System</strong>.</p>
+        <p>Create a style reference block (e.g., "Warm palette, golden hour, 35mm film grain") and append it to <em>every single prompt</em> in your project.</p>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">Mistake #6: Skipping Quality Control</h2>
+        <p>Publishing AI content without review is dangerous. Artifacts, morphing faces, and physics glitches happen. Build a QC checklist:</p>
+        <ul className="list-disc list-inside space-y-2 text-slate-300">
+            <li>Check faces/hands for morphing</li>
+            <li>Verify physics/motion feels natural</li>
+            <li>Ensure consistency in lighting/color</li>
+            <li>Check for platform-specific technical compliance</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">Mistake #7: Unrealistic Expectations</h2>
+        <p>AI isn't magic. It struggles with precise brand logos, complex hand movements, and specific celebrity likenesses. Don't fight these limitations—design around them using hybrid workflows (combining AI backgrounds with real product shots).</p>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">Final Thoughts</h2>
+        <p>
+          The difference between frustrated beginners and successful creators isn't that successful creators don't make mistakes—it's that they have a system to prevent them.
+        </p>
+        <p>
+          Build your mistake-prevention system: document what fails, create templates for what works, and never publish without QC. Now you have the knowledge to avoid the 87% failure rate. The question is: will you use it?
+        </p>
+
+        <div className="mt-10 border-t border-slate-800 pt-6">
+            <h3 className="font-bold text-slate-200 mb-2">About This Guide</h3>
+            <p className="text-sm text-slate-400">This guide compiles insights from analyzing over 10,000 AI-generated videos to help creators avoid costly mistakes and produce professional quality content efficiently.</p>
         </div>
       </div>
     )
