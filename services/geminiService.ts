@@ -52,6 +52,7 @@ export const generateCctvPrompt = async (options: GeneratorOptions): Promise<str
 - Scene: "${options.scene}"
 - Location: ${options.location}
 - Time of Day: ${options.timeOfDay}
+- Camera Behavior: ${options.cameraBehavior}
 - Visual Effects: ${options.effects.length > 0 ? options.effects.join(', ') : 'None'}
 `;
 

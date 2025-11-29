@@ -3,6 +3,7 @@ export interface GeneratorOptions {
   scene: string;
   location: string;
   timeOfDay: string;
+  cameraBehavior: string;
   effects: string[];
 }
 

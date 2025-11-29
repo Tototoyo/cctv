@@ -41,6 +41,15 @@ export const TIMES_OF_DAY = [
   'Dawn (5 AM)',
 ];
 
+export const CAMERA_BEHAVIORS = [
+  'Static / Fixed (Standard)',
+  'Slight Shake (Old Mount)',
+  'Slow Zoom-In (Very Subtle)',
+  'Auto-Exposure Pulsing',
+  'Auto-Focus Hunting',
+  'Slow Pan (Motorized PTZ)',
+];
+
 export const EFFECTS = [
   'Infrared / Night Vision',
   'Slightly Grainy',

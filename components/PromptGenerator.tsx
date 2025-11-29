@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import type { GeneratorOptions } from '../types';
-import { LOCATIONS, TIMES_OF_DAY, EFFECTS } from '../constants';
+import { LOCATIONS, TIMES_OF_DAY, EFFECTS, CAMERA_BEHAVIORS } from '../constants';
 
 interface PromptGeneratorProps {
   onGenerate: (options: GeneratorOptions) => void;
@@ -22,6 +22,7 @@ export const PromptGenerator: React.FC<PromptGeneratorProps> = ({ onGenerate, is
   const [scene, setScene] = useState<string>('A person nervously looking around before trying to open a locked door.');
   const [location, setLocation] = useState<string>(LOCATIONS[1]);
   const [timeOfDay, setTimeOfDay] = useState<string>(TIMES_OF_DAY[3]);
+  const [cameraBehavior, setCameraBehavior] = useState<string>(CAMERA_BEHAVIORS[0]);
   const [effects, setEffects] = useState<string[]>([EFFECTS[0], EFFECTS[5]]);
   const [timeRemaining, setTimeRemaining] = useState<string>('');
 
@@ -53,7 +54,7 @@ export const PromptGenerator: React.FC<PromptGeneratorProps> = ({ onGenerate, is
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (usageLimitMessage) return;
-    onGenerate({ scene, location, timeOfDay, effects });
+    onGenerate({ scene, location, timeOfDay, cameraBehavior, effects });
   };
 
   const isLimitReached = !!usageLimitMessage;
@@ -89,18 +90,34 @@ export const PromptGenerator: React.FC<PromptGeneratorProps> = ({ onGenerate, is
         </select>
       </div>
 
-      <div>
-        <label htmlFor="timeOfDay" className="block text-sm font-medium text-slate-300 mb-2">
-          Time of Day
-        </label>
-        <select
-          id="timeOfDay"
-          value={timeOfDay}
-          onChange={(e) => setTimeOfDay(e.target.value)}
-          className="w-full bg-gray-900 border border-slate-700 rounded-sm shadow-sm focus:ring-green-500 focus:border-green-500 text-slate-200 p-3 transition"
-        >
-          {TIMES_OF_DAY.map(time => <option key={time} value={time} className="bg-gray-900 text-slate-200">{time}</option>)}
-        </select>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label htmlFor="timeOfDay" className="block text-sm font-medium text-slate-300 mb-2">
+            Time of Day
+          </label>
+          <select
+            id="timeOfDay"
+            value={timeOfDay}
+            onChange={(e) => setTimeOfDay(e.target.value)}
+            className="w-full bg-gray-900 border border-slate-700 rounded-sm shadow-sm focus:ring-green-500 focus:border-green-500 text-slate-200 p-3 transition"
+          >
+            {TIMES_OF_DAY.map(time => <option key={time} value={time} className="bg-gray-900 text-slate-200">{time}</option>)}
+          </select>
+        </div>
+
+        <div>
+          <label htmlFor="cameraBehavior" className="block text-sm font-medium text-slate-300 mb-2">
+            Camera Behavior
+          </label>
+          <select
+            id="cameraBehavior"
+            value={cameraBehavior}
+            onChange={(e) => setCameraBehavior(e.target.value)}
+            className="w-full bg-gray-900 border border-slate-700 rounded-sm shadow-sm focus:ring-green-500 focus:border-green-500 text-slate-200 p-3 transition"
+          >
+            {CAMERA_BEHAVIORS.map(behavior => <option key={behavior} value={behavior} className="bg-gray-900 text-slate-200">{behavior}</option>)}
+          </select>
+        </div>
       </div>
       
       <div>
