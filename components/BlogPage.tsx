@@ -1,4 +1,5 @@
 
+
 import React, { useState } from 'react';
 import { CheckIcon, CalendarIcon, UserIcon, ArrowLeftIcon, ArrowRightIcon } from 'lucide-react';
 
@@ -372,6 +373,140 @@ const MusicVideoVisualExample = () => (
             {Array.from({ length: 40 }).map((_, i) => (
                 <div key={i} className="flex-1 bg-green-500/50 rounded-full" style={{ height: `${Math.random() * 80 + 20}%` }}></div>
             ))}
+        </div>
+    </div>
+  </div>
+);
+
+const ComparisonVisualExample = () => (
+  <div className="my-10 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+    <div className="bg-slate-900 border border-slate-700 rounded-lg p-6 relative overflow-hidden group hover:border-slate-500 transition-colors">
+      <div className="absolute top-0 right-0 bg-slate-800 text-[10px] px-2 py-1 rounded-bl text-slate-400 font-mono tracking-widest uppercase">Traditional</div>
+      <div className="flex flex-col h-full justify-between">
+        <div className="space-y-4">
+            <div className="w-full aspect-video bg-slate-800/50 border border-slate-700 rounded flex items-center justify-center relative p-4">
+                {/* Sketch representation */}
+                <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #475569 1px, transparent 0)', backgroundSize: '10px 10px' }}></div>
+                <div className="w-24 h-16 border-2 border-dashed border-slate-500 rounded transform -rotate-2 bg-slate-800 z-10 flex items-center justify-center">
+                    <span className="text-[10px] text-slate-600 font-serif italic">Scene 14B</span>
+                </div>
+                <div className="w-24 h-16 border-2 border-dashed border-slate-500 rounded transform rotate-3 bg-slate-800 absolute left-1/2 ml-2 top-1/2 -mt-2 z-0"></div>
+            </div>
+            <div>
+                <div className="text-sm font-bold text-slate-300">Hand-Drawn Storyboard</div>
+                <div className="text-xs text-slate-500 mt-1">Manual illustration & composition</div>
+            </div>
+        </div>
+        <div className="mt-6 pt-4 border-t border-slate-800 grid grid-cols-2 gap-4 text-center">
+            <div>
+                <div className="text-[10px] text-slate-500 uppercase tracking-wider">Timeline</div>
+                <div className="text-xl font-bold text-slate-300">3-5 Days</div>
+            </div>
+            <div>
+                <div className="text-[10px] text-slate-500 uppercase tracking-wider">Est. Cost</div>
+                <div className="text-xl font-bold text-slate-300">$2,500+</div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div className="bg-slate-900 border border-green-500/30 rounded-lg p-6 relative overflow-hidden group hover:border-green-500/50 transition-colors">
+      <div className="absolute top-0 right-0 bg-green-900/30 text-[10px] px-2 py-1 rounded-bl text-green-400 font-mono tracking-widest uppercase">AI Generated</div>
+       <div className="flex flex-col h-full justify-between">
+        <div className="space-y-4">
+             <div className="w-full aspect-video bg-black/40 border border-green-500/20 rounded relative overflow-hidden flex flex-col">
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-500/5"></div>
+                
+                {/* Grid of generated images */}
+                <div className="grid grid-cols-2 h-full w-full gap-0.5 opacity-80">
+                   <div className="bg-slate-800/80 m-0.5 rounded-sm animate-pulse"></div>
+                   <div className="bg-slate-800/60 m-0.5 rounded-sm"></div>
+                   <div className="bg-slate-800/60 m-0.5 rounded-sm"></div>
+                   <div className="bg-slate-800/80 m-0.5 rounded-sm"></div>
+                </div>
+
+                <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="bg-black/60 backdrop-blur px-3 py-1 rounded border border-green-500/30 text-green-400 text-xs font-mono">
+                        Generating Variations...
+                    </div>
+                </div>
+            </div>
+             <div>
+                <div className="text-sm font-bold text-white">AI Visualization</div>
+                <div className="text-xs text-slate-400 mt-1">Text-to-Image/Video Generation</div>
+            </div>
+        </div>
+        <div className="mt-6 pt-4 border-t border-slate-800 grid grid-cols-2 gap-4 text-center">
+            <div>
+                <div className="text-[10px] text-green-500/70 uppercase tracking-wider">Timeline</div>
+                <div className="text-xl font-bold text-green-400">3-4 Hours</div>
+            </div>
+            <div>
+                <div className="text-[10px] text-green-500/70 uppercase tracking-wider">Est. Cost</div>
+                <div className="text-xl font-bold text-green-400">~$15.00</div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+);
+
+const WorkflowVisualExample = () => (
+  <div className="my-10 max-w-4xl mx-auto">
+    <div className="bg-slate-900 border border-slate-800 rounded-lg p-8 relative overflow-hidden">
+        {/* Background Grid */}
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, #4ade80 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
+        
+        <h3 className="text-xl font-bold text-center text-white mb-8 relative z-10">AI Video Production Pipeline</h3>
+        
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-7 gap-4">
+            {['Pre-Production', 'Organization', 'Generation', 'Quality Control', 'Assembly', 'Post-Production', 'Delivery'].map((step, i) => (
+                <div key={i} className="relative flex flex-col items-center group">
+                    <div className="w-10 h-10 rounded-full bg-slate-800 border-2 border-green-500/50 flex items-center justify-center text-green-400 font-bold font-mono text-sm mb-3 z-20 relative shadow-[0_0_10px_rgba(74,222,128,0.2)] group-hover:border-green-400 group-hover:bg-green-900/20 transition-all">
+                        {i + 1}
+                    </div>
+                    <div className="text-[10px] uppercase tracking-wider font-bold text-slate-400 text-center group-hover:text-green-400 transition-colors">{step}</div>
+                    
+                    {/* Connector Line */}
+                    {i < 6 && (
+                        <div className="hidden md:block absolute top-5 left-1/2 w-full h-0.5 bg-slate-700 -z-0"></div>
+                    )}
+                    {/* Vertical Connector for Mobile */}
+                    {i < 6 && (
+                         <div className="md:hidden absolute top-10 left-1/2 h-8 w-0.5 bg-slate-700 -z-0"></div>
+                    )}
+                </div>
+            ))}
+        </div>
+
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 relative z-10">
+             <div className="bg-black/40 border border-slate-700/50 p-4 rounded-sm hover:border-green-500/30 transition-colors">
+                <div className="text-green-400 text-xs font-mono mb-1">PHASE 1-2</div>
+                <div className="text-white font-bold text-sm mb-2">Foundation</div>
+                <ul className="text-xs text-slate-400 space-y-1">
+                    <li>• Creative Brief</li>
+                    <li>• Shot Lists</li>
+                    <li>• Folder Structure</li>
+                </ul>
+             </div>
+             <div className="bg-black/40 border border-slate-700/50 p-4 rounded-sm hover:border-green-500/30 transition-colors">
+                <div className="text-green-400 text-xs font-mono mb-1">PHASE 3-4</div>
+                <div className="text-white font-bold text-sm mb-2">Production</div>
+                 <ul className="text-xs text-slate-400 space-y-1">
+                    <li>• AI Generation</li>
+                    <li>• Prompt Iteration</li>
+                    <li>• Quality Check</li>
+                </ul>
+             </div>
+             <div className="bg-black/40 border border-slate-700/50 p-4 rounded-sm hover:border-green-500/30 transition-colors">
+                <div className="text-green-400 text-xs font-mono mb-1">PHASE 5-7</div>
+                <div className="text-white font-bold text-sm mb-2">Finishing</div>
+                 <ul className="text-xs text-slate-400 space-y-1">
+                    <li>• Editing & Assembly</li>
+                    <li>• Color & Audio</li>
+                    <li>• Final Export</li>
+                </ul>
+             </div>
         </div>
     </div>
   </div>
@@ -1340,6 +1475,321 @@ const getBlogPosts = (navigateToGenerator: () => void): BlogPost[] => [
         <div className="mt-10 border-t border-slate-800 pt-6">
             <h3 className="font-bold text-slate-200 mb-2">About This Guide</h3>
             <p className="text-sm text-slate-400">This guide was created to empower independent musicians to create professional-quality music videos using AI tools, removing financial barriers to visual creativity.</p>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: '10',
+    slug: 'ai-video-prompts-vs-traditional-storyboarding',
+    title: 'AI Video Prompts vs Traditional Storyboarding: The Complete 2025 Comparison Guide',
+    excerpt: 'Traditional sketches vs AI generation. A comprehensive comparison of speed, cost, precision, and workflow to help you decide which approach fits your next video project.',
+    date: 'February 18, 2025',
+    author: 'Production Lead',
+    category: 'Industry Analysis',
+    readTime: '15 min read',
+    keywords: ['Storyboarding', 'AI video', 'Pre-production', 'Midjourney', 'Traditional art', 'Cost comparison'],
+    content: (
+      <div className="space-y-8">
+        <p className="lead text-xl text-slate-300 font-light">
+          Here's the question on every video creator's mind right now: Should I spend 3 days storyboarding my project with traditional methods, or should I generate visual concepts with AI in 3 hours?
+        </p>
+        <p>
+          I've been creating video content professionally for years, using traditional storyboarding for client pitches, commercial productions, and narrative projects. When AI video generation tools reached production quality in 2024-2025, I had to figure out: where do these tools fit in the production workflow?
+        </p>
+        <p>
+          After 18 months of using both approaches across dozens of projects—from music videos to corporate content to short films—I've developed a clear framework for understanding when each method works best, how they compare, and most importantly, how they can work together.
+        </p>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">What We're Comparing: Defining the Two Approaches</h2>
+
+        <h3 className="text-xl font-bold text-slate-200 mt-6 mb-3">Traditional Storyboarding</h3>
+        <ul className="list-disc list-inside space-y-2 text-slate-300">
+            <li><strong>Methods:</strong> Hand-drawn sketches, illustrated boards, photo compositions.</li>
+            <li><strong>Process:</strong> Read script, visualize shot, sketch frame, add notes.</li>
+            <li><strong>Output:</strong> Static images with annotations describing each shot.</li>
+        </ul>
+
+        <h3 className="text-xl font-bold text-slate-200 mt-6 mb-3">AI Video Prompt Generation</h3>
+        <ul className="list-disc list-inside space-y-2 text-slate-300">
+            <li><strong>Methods:</strong> Text-to-image for static frames, text-to-video for motion previz.</li>
+            <li><strong>Process:</strong> Write prompts, generate visuals, iterate, select results.</li>
+            <li><strong>Output:</strong> AI-generated images or motion footage organized sequentially.</li>
+        </ul>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">Head-to-Head Comparison: Critical Factors</h2>
+        
+        <ComparisonVisualExample />
+
+        <div className="space-y-6 mt-6">
+             <div className="bg-gray-900/50 p-4 border-l-2 border-blue-500/50">
+                <h4 className="font-bold text-slate-200 mb-1">1. Speed and Efficiency</h4>
+                <p className="text-slate-400 text-sm"><strong>Winner: AI.</strong> Generating a complete storyboard for a 3-minute video takes 2-6 hours with AI versus 2-5 days traditionally. However, traditional sketching may be faster for getting a specific vision right on the first attempt without iteration.</p>
+            </div>
+             <div className="bg-gray-900/50 p-4 border-l-2 border-blue-500/50">
+                <h4 className="font-bold text-slate-200 mb-1">2. Cost Comparison</h4>
+                <p className="text-slate-400 text-sm"><strong>Winner: AI.</strong> A professional storyboard artist costs $1,000-$5,000+ per project. AI generation costs $20-$150 in credits. That's a 96% cost reduction for standard projects.</p>
+            </div>
+             <div className="bg-gray-900/50 p-4 border-l-2 border-blue-500/50">
+                <h4 className="font-bold text-slate-200 mb-1">3. Creative Control and Precision</h4>
+                <p className="text-slate-400 text-sm"><strong>Winner: Traditional.</strong> Hand-drawing allows for complete control over exact positioning, expressions, and brand elements. AI involves "guiding" rather than "controlling" the output.</p>
+            </div>
+             <div className="bg-gray-900/50 p-4 border-l-2 border-blue-500/50">
+                <h4 className="font-bold text-slate-200 mb-1">4. Realism and Production Value</h4>
+                <p className="text-slate-400 text-sm"><strong>Winner: AI.</strong> AI generates photorealistic or near-final quality visuals that help clients visualize lighting and atmosphere better than rough sketches.</p>
+            </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">When to Use Each Approach: Decision Framework</h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+            <div className="bg-slate-800/50 p-5 border border-slate-700 rounded-sm">
+                <h4 className="font-bold text-white mb-4 border-b border-slate-600 pb-2">Use Traditional Storyboarding When:</h4>
+                <ul className="space-y-2 text-sm text-slate-300">
+                    <li className="flex gap-2"><CheckIcon className="w-4 h-4 text-green-500 shrink-0"/> You need exact precision for brand/legal</li>
+                    <li className="flex gap-2"><CheckIcon className="w-4 h-4 text-green-500 shrink-0"/> Character consistency is critical</li>
+                    <li className="flex gap-2"><CheckIcon className="w-4 h-4 text-green-500 shrink-0"/> Working on animated projects</li>
+                    <li className="flex gap-2"><CheckIcon className="w-4 h-4 text-green-500 shrink-0"/> You have budget for professional artists</li>
+                    <li className="flex gap-2"><CheckIcon className="w-4 h-4 text-green-500 shrink-0"/> Complex choreography needs planning</li>
+                </ul>
+            </div>
+            <div className="bg-green-900/10 p-5 border border-green-500/20 rounded-sm">
+                <h4 className="font-bold text-white mb-4 border-b border-green-500/30 pb-2">Use AI Prompt Generation When:</h4>
+                <ul className="space-y-2 text-sm text-slate-300">
+                    <li className="flex gap-2"><CheckIcon className="w-4 h-4 text-green-500 shrink-0"/> Speed is critical (deadline approaching)</li>
+                    <li className="flex gap-2"><CheckIcon className="w-4 h-4 text-green-500 shrink-0"/> Budget is limited</li>
+                    <li className="flex gap-2"><CheckIcon className="w-4 h-4 text-green-500 shrink-0"/> You need to test many concepts fast</li>
+                    <li className="flex gap-2"><CheckIcon className="w-4 h-4 text-green-500 shrink-0"/> Photorealism helps client communication</li>
+                    <li className="flex gap-2"><CheckIcon className="w-4 h-4 text-green-500 shrink-0"/> You lack illustration skills</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">The Hybrid Approach: Best of Both Worlds</h2>
+        <p>The most sophisticated creators don't choose one or the other—they strategically combine both.</p>
+        
+        <h3 className="text-xl font-bold text-slate-200 mt-6 mb-3">Workflow: AI First Pass, Traditional Refinement</h3>
+        <ol className="list-decimal list-inside space-y-2 text-slate-300 ml-2">
+            <li>Generate complete AI storyboard for initial client pitch to sell the mood.</li>
+            <li>After approval, commission traditional artist for detailed production boards.</li>
+            <li>Artist uses AI boards as visual reference.</li>
+            <li><strong>Result:</strong> Fast client approval, detailed production execution.</li>
+        </ol>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">Tool Recommendations</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+             <div className="bg-gray-900/50 p-4 border border-slate-800 rounded-sm">
+                <h4 className="font-bold text-slate-200 mb-2">Traditional Tools</h4>
+                <ul className="list-disc list-inside text-sm text-slate-400">
+                    <li><strong>Storyboard Pro:</strong> Industry standard ($45/mo)</li>
+                    <li><strong>Procreate:</strong> Excellent for iPad sketching ($13)</li>
+                    <li><strong>Boords:</strong> Collaborative online platform</li>
+                </ul>
+            </div>
+             <div className="bg-gray-900/50 p-4 border border-slate-800 rounded-sm">
+                 <h4 className="font-bold text-slate-200 mb-2">AI Tools</h4>
+                 <ul className="list-disc list-inside text-sm text-slate-400">
+                    <li><strong>Midjourney:</strong> Best static photorealism</li>
+                    <li><strong>Runway Gen-3:</strong> Best camera movement</li>
+                    <li><strong>Sora 2 / Kling:</strong> High quality motion previz</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">Final Thoughts: It's Not Either/Or</h2>
+        <p>
+            The "AI vs Traditional Storyboarding" framing suggests these are competing approaches where one must win. The reality is more nuanced: these are different tools in your creative toolkit.
+        </p>
+        <p>
+            Your competitive advantage doesn't come from choosing the "right" approach. It comes from mastering both and knowing exactly when each serves you best. The future of video production isn't AI replacing traditional methods. It's expanded creative possibilities when you know how to leverage everything available.
+        </p>
+
+        <div className="mt-10 border-t border-slate-800 pt-6">
+            <h3 className="font-bold text-slate-200 mb-2">About This Guide</h3>
+            <p className="text-sm text-slate-400">This comprehensive comparison draws on 18 months of hands-on experience using both traditional storyboarding and AI generation across commercial, narrative, and music video projects.</p>
+        </div>
+      </div>
+    )
+  },
+  {
+    id: '11',
+    slug: 'ai-video-production-workflow-guide',
+    title: 'The Complete AI Video Production Workflow: From Concept to Final Delivery (2025 Professional Guide)',
+    excerpt: 'From client brief to final delivery. A systematic 7-phase workflow for professional AI video production, organizing generation, editing, and quality control.',
+    date: 'February 25, 2025',
+    author: 'Production Lead',
+    category: 'Workflow & Process',
+    readTime: '18 min read',
+    keywords: ['AI video workflow', 'Production guide', 'Pre-production', 'File organization', 'Quality control', 'Post-production'],
+    content: (
+      <div className="space-y-8">
+        <p className="lead text-xl text-slate-300 font-light">
+          You've mastered prompts. You're generating beautiful clips. But here's the question that separates hobbyists from professionals: How do you turn individual AI-generated clips into polished, professional video content that clients pay for?
+        </p>
+        <p>
+          I learned this the hard way. Six months ago, I could generate stunning 10-second clips all day long. But when a client asked for a complete 2-minute commercial, I had no workflow. I wasted days figuring out how to organize generations, maintain consistency, integrate audio, and deliver professional files.
+        </p>
+        <p>
+          After producing dozens of projects using AI video generation—from corporate videos to music videos to commercial content—I've developed a systematic workflow that transforms AI generation from experimental tool into production infrastructure. This comprehensive guide walks through the entire workflow: from initial client brief to final delivery.
+        </p>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">The 7-Phase Production Workflow</h2>
+        <p>Professional AI video production follows a structured workflow spanning seven distinct phases:</p>
+        
+        <WorkflowVisualExample />
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">Phase 1: Pre-Production Planning (Foundation)</h2>
+        <p><strong>Timeline:</strong> 20-40% of total project time<br/><strong>Goal:</strong> Complete creative and technical blueprint before generating anything</p>
+
+        <h3 className="text-xl font-bold text-slate-200 mt-6 mb-3">1.1 Client Brief Analysis</h3>
+        <p className="text-slate-300">Start by answering the critical questions: What's the primary goal? Who is the audience? What are the platform requirements?</p>
+
+        <h3 className="text-xl font-bold text-slate-200 mt-6 mb-3">1.3 Technical Planning</h3>
+        <div className="bg-black/50 p-4 border border-slate-700/50 rounded-sm font-mono text-xs md:text-sm text-slate-300 overflow-x-auto">
+            <div className="text-green-400 mb-2">// TECHNICAL SPEC SHEET</div>
+            <div>Project: [Name]</div>
+            <div>Delivery: [Platform, resolution, format]</div>
+            <div>Duration: [Total length]</div>
+            <div>Aspect Ratio: [16:9, 9:16, 1:1, 4:5]</div>
+            <div>Audio: [Music + VO / Music only / Ambient]</div>
+            <div>AI Platforms: [Runway for X, Sora for Y, etc.]</div>
+        </div>
+
+        <h3 className="text-xl font-bold text-slate-200 mt-6 mb-3">1.4 Style Reference Creation</h3>
+        <p className="text-slate-300">Your style reference becomes the foundation for all generation. Create a standard prompt suffix used for every shot to ensure consistency (e.g., "Shot on 35mm film, warm golden tones, natural lighting, soft shadows, f/2.8").</p>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">Phase 2: Content Organization (Infrastructure)</h2>
+        <p><strong>Timeline:</strong> 1-2 hours upfront (saves days later)<br/><strong>Goal:</strong> Build organizational infrastructure before generation begins</p>
+
+        <h3 className="text-xl font-bold text-slate-200 mt-6 mb-3">2.1 Project Folder Structure</h3>
+        <div className="bg-black/50 p-4 border border-slate-700/50 rounded-sm font-mono text-xs md:text-sm text-slate-400 overflow-x-auto">
+<pre>{`ProjectName/
+├── 01_PreProduction/
+├── 02_References/
+├── 03_Prompts/
+├── 04_Generated/
+│   ├── shot_01/
+│   └── shot_02/
+├── 05_Selected/
+├── 06_Audio/
+├── 07_Editing/
+└── 09_Delivery/`}</pre>
+        </div>
+
+        <h3 className="text-xl font-bold text-slate-200 mt-6 mb-3">2.2 Shot List Organization</h3>
+        <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm text-slate-400 border-collapse border border-slate-700">
+                <thead className="bg-slate-800 text-slate-200">
+                    <tr>
+                        <th className="p-2 border border-slate-700">Shot #</th>
+                        <th className="p-2 border border-slate-700">Description</th>
+                        <th className="p-2 border border-slate-700">Dur</th>
+                        <th className="p-2 border border-slate-700">Platform</th>
+                        <th className="p-2 border border-slate-700">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td className="p-2 border border-slate-700">01</td>
+                        <td className="p-2 border border-slate-700">Opening establishing shot</td>
+                        <td className="p-2 border border-slate-700">5s</td>
+                        <td className="p-2 border border-slate-700">Runway</td>
+                        <td className="p-2 border border-slate-700">✅</td>
+                    </tr>
+                    <tr>
+                        <td className="p-2 border border-slate-700">02</td>
+                        <td className="p-2 border border-slate-700">Product close-up</td>
+                        <td className="p-2 border border-slate-700">3s</td>
+                        <td className="p-2 border border-slate-700">Sora</td>
+                        <td className="p-2 border border-slate-700">⏳</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">Phase 3: Generation Phase (Production)</h2>
+        <p><strong>Timeline:</strong> 30-50% of total project time<br/><strong>Goal:</strong> Systematically generate all video assets</p>
+
+        <h3 className="text-xl font-bold text-slate-200 mt-6 mb-3">3.2 Platform Selection per Shot</h3>
+        <ul className="list-disc list-inside space-y-2 text-slate-300">
+            <li><strong>Runway Gen-3:</strong> Camera movement, human subjects, cinematic shots.</li>
+            <li><strong>Sora 2:</strong> Complex spatial relationships, physics-heavy content.</li>
+            <li><strong>Kling AI:</strong> Action sequences, high energy, vertical content.</li>
+            <li><strong>Luma Dream Machine:</strong> Atmospheric, dreamy, and abstract visuals.</li>
+        </ul>
+
+        <h3 className="text-xl font-bold text-slate-200 mt-6 mb-3">3.3 Iterative Generation Process</h3>
+        <p className="text-slate-300">Budget for 3-5 iterations per shot. Start with base prompts, analyze results, refine variables one by one, and select the best version before moving on.</p>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">Phase 4: Quality Control (Critical Review)</h2>
+        <p><strong>Timeline:</strong> 10-15% of total project time<br/><strong>Goal:</strong> Ensure all assets meet professional standards</p>
+        <p className="text-slate-300">Review every asset individually for artifacts, resolution issues, and motion glitches. Then watch them in sequence to ensure flow and consistency. If a shot stands out as lower quality, regenerate it.</p>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">Phase 5: Assembly & Editing (Construction)</h2>
+        <p><strong>Timeline:</strong> 15-25% of total project time<br/><strong>Goal:</strong> Combine assets into cohesive final content</p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+             <div className="bg-gray-900/50 p-4 border border-slate-800 rounded-sm">
+                <h4 className="font-bold text-slate-200 mb-2">Editing Workflow</h4>
+                <ol className="list-decimal list-inside text-sm text-slate-400 space-y-1">
+                    <li><strong>Assembly Edit:</strong> Place all shots in order</li>
+                    <li><strong>Rough Cut:</strong> Trim timing and remove excess</li>
+                    <li><strong>Fine Cut:</strong> Precise timing and pacing</li>
+                    <li><strong>Polishing:</strong> Transitions and effects</li>
+                </ol>
+            </div>
+             <div className="bg-gray-900/50 p-4 border border-slate-800 rounded-sm">
+                 <h4 className="font-bold text-slate-200 mb-2">Pacing Principles</h4>
+                 <ul className="list-disc list-inside text-sm text-slate-400 space-y-1">
+                    <li><strong>Hook (0-3s):</strong> Most compelling content</li>
+                    <li><strong>Development:</strong> Build interest</li>
+                    <li><strong>Climax:</strong> Strongest moment</li>
+                    <li><strong>Resolution:</strong> Satisfying conclusion</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">Phase 6: Post-Production (Polish)</h2>
+        <p><strong>Timeline:</strong> 15-20% of total project time<br/><strong>Goal:</strong> Professional polish and refinement</p>
+
+        <h3 className="text-xl font-bold text-slate-200 mt-6 mb-3">6.1 Color Grading</h3>
+        <p className="text-slate-300">AI footage often varies slightly in tone. Color grading is essential to unify shots. Balance exposure first, then apply a cohesive look to the entire timeline.</p>
+
+        <h3 className="text-xl font-bold text-slate-200 mt-6 mb-3">6.2 Audio Production</h3>
+        <p className="text-slate-300">Audio is 50% of the experience. Layer music, voiceover, and sound effects to create depth. AI-generated video is silent; sound design brings it to life.</p>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">Phase 7: Delivery & Distribution (Completion)</h2>
+        <p><strong>Timeline:</strong> 5-10% of total project time<br/><strong>Goal:</strong> Deliver professional files in all required formats</p>
+
+        <h3 className="text-xl font-bold text-slate-200 mt-6 mb-3">7.1 Export Settings</h3>
+        <div className="space-y-4">
+            <div className="bg-black/50 p-4 border border-slate-700/50 rounded-sm font-mono text-xs text-slate-400">
+                <div className="text-green-400 mb-1 font-bold">Instagram Reels / TikTok</div>
+                Format: H.264<br/>
+                Resolution: 1080x1920 (vertical)<br/>
+                Frame Rate: 30fps<br/>
+                Bitrate: 10-15 Mbps
+            </div>
+            <div className="bg-black/50 p-4 border border-slate-700/50 rounded-sm font-mono text-xs text-slate-400">
+                <div className="text-green-400 mb-1 font-bold">YouTube Master</div>
+                Format: H.264 or ProRes<br/>
+                Resolution: 4K (3840x2160)<br/>
+                Frame Rate: 24fps or 30fps<br/>
+                Bitrate: 35-45 Mbps
+            </div>
+        </div>
+
+        <h2 className="text-2xl font-bold text-green-400 mt-8 border-l-4 border-green-500/50 pl-4">Final Thoughts: Workflow Enables Professionalism</h2>
+        <p>
+            Beautiful AI-generated clips don't make professional content. Professional workflow makes professional content. The difference between dabbling with AI video tools and building a sustainable business around them comes down to process.
+        </p>
+        <p>
+            Your competitive advantage isn't the AI platform you use—everyone has access to those. Your competitive advantage is the systematic process you've built around those tools. Now you have that process. The question is: how will you implement it?
+        </p>
+
+        <div className="mt-10 border-t border-slate-800 pt-6">
+            <h3 className="font-bold text-slate-200 mb-2">About This Guide</h3>
+            <p className="text-sm text-slate-400">This comprehensive workflow guide synthesizes months of professional AI video production experience across commercial, corporate, and creative projects. The framework has been tested and refined through dozens of client deliveries.</p>
         </div>
       </div>
     )
